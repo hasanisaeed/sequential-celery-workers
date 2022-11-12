@@ -1,19 +1,27 @@
-from celery import Celery
-from kombu import Queue
+from celery import Celery, shared_task
+from celery.result import allow_join_result
 
-app = Celery('tasks', broker='pyamqp://guest@localhost//',
-              backend='redis://:12345678@localhost/1/')
+app = Celery(__name__, 
+             broker='pyamqp://guest@localhost//',
+             backend='redis://:12345678@localhost/1/')
 
-# app.conf.task_queues = (
-#     # Queue('saeed',    routing_key='add_f'),
-#     Queue('saeed',   routing_key='divide_.#'),
-# )
-@app.task(name='add_function', queue='celery')
-def add(x, y):
-    print('>> EXCHANGE...')
-    return x + y
+app.conf.task_default_queue = 'c2.queue'
 
 
-@app.task(name='divide_function', queue='saeed')
-def divide(x, y):
-    return x / y
+@shared_task
+def add(data):
+    
+    # Do your job
+    
+    data['2'] = 'c2 -> c3'
+    
+    result = app.send_task(name='tasks.add',
+                  args=[data],
+             queue='c3.queue',
+             bind=True)
+    
+    # This line is optional. Remove that!
+    with allow_join_result():
+        output = result.get()
+    
+    return output

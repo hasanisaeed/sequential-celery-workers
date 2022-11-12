@@ -1,19 +1,15 @@
-from celery import Celery
-from kombu import Queue
+from celery import Celery, shared_task
 
-app = Celery('tasks', broker='pyamqp://guest@localhost//',
-              backend='redis://:12345678@localhost/1/')
+app = Celery(__name__, 
+             broker='pyamqp://guest@localhost//',
+             backend='redis://:12345678@localhost/1/')
 
-# app.conf.task_queues = (
-#     # Queue('saeed',    routing_key='add_f'),
-#     Queue('saeed',   routing_key='divide_.#'),
-# )
-@app.task(name='add_function', queue='celery')
-def add(x, y):
-    print('>> EXCHANGE...')
-    return x + y
+app.conf.task_default_queue = 'c3.queue'
 
-
-@app.task(name='divide_function', queue='saeed')
-def divide(x, y):
-    return x / y
+@shared_task
+def add(data):
+    
+    # Do your job!
+    
+    data['3'] = 'c3 (END)' 
+    return data

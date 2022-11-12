@@ -1,4 +1,4 @@
-### Senario:
+### Scenario:
 
 `c1` send data to `c2`
 `c2` send data to `c3`
