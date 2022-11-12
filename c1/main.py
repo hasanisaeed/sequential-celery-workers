@@ -1,8 +1,7 @@
-import sys
+from tasks import add
 
-from tasks import add, divide
+result = add.apply_async(({'0': 'c1 (START)'}, ))
 
-r1 = add.apply_async((87.7, 2), propagate= True)
+# Optional
 
-
-divide.apply_async((200, 2), propagate= True)
+print(result.get())
