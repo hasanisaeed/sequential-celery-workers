@@ -11,6 +11,8 @@
 ### Run celery workers in their folders
 
     cd c1/
+    python main.py // run main file to start sending data
+    
     celery -A tasks worker -l INFO
 
     cd c2/
