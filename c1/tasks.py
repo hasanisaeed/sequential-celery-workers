@@ -14,9 +14,9 @@ def add(data):
     data['1'] = 'c1 -> c2'
     
     result = app.send_task(name='tasks.add',
-                  args=[data],
-             queue='c2.queue',
-             bind=True)
+                           args=[data],
+                           queue='c2.queue',
+                           bind=True)
     
     # Optional. Remove that!
     with allow_join_result():
