@@ -18,3 +18,6 @@
 
     cd c3/
     celery -A tasks worker -l INFO
+
+
+> Warning: update your `broker` and `backend` urls!
