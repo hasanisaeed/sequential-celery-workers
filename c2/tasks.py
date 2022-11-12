@@ -20,7 +20,7 @@ def add(data):
              queue='c3.queue',
              bind=True)
     
-    # This line is optional. Remove that!
+    # Optional. Remove that!
     with allow_join_result():
         output = result.get()
     
