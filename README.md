@@ -1,12 +1,12 @@
 ### Scenario:
 
-`c1` send data to `c2`
+- `c1` send data to `c2`
 
-`c2` send data to `c3`
+- `c2` receive date from `c1` and send data to `c3`
 
-`c3` return results to `c2`
+- `c3` receive data from `c2` and return results to `c2`
 
-`c2` return results to `c1`
+- `c2` return results to `c1`
 
 ### Run celery workers in their folders
 
