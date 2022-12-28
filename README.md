@@ -1,5 +1,7 @@
 ### Scenario:
 
+> Three different projects that work together! 
+
 - `c1` send data to `c2`
 
 - `c2` receive date from `c1` and send data to `c3`
