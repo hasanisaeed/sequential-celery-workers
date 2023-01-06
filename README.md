@@ -4,7 +4,7 @@
 
 - `c1` send data to `c2`
 
-- `c2` receive date from `c1` and send data to `c3`
+- `c2` receive data from `c1` and send data to `c3`
 
 - `c3` receive data from `c2` and return results to `c2`
 
